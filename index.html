@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar tabla</title>
+</head>
+<body>
+    <form id="formulario" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="link_descarga">Link de Descarga:</label>
+        <input type="text" id="link_descarga" name="link_descarga" required>
+
+        <label for="grupo">Grupo:</label>
+        <input type="text" id="grupo" name="grupo" required>
+
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required>
+
+        <button type="button" onclick="agregarLibro()">Agregar Libro</button>
+    </form>
+    <br>
+    <form id="formulario" enctype="multipart/form-data">
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" required>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="link_descarga">Link de Descarga:</label>
+        <input type="text" id="link_descarga" name="link_descarga" required>
+
+        <label for="grupo">Grupo:</label>
+        <input type="text" id="grupo" name="grupo" required>
+
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required>
+
+        <button type="button" onclick="editarLibro()">Editar Libro</button>
+    </form>
+    <br>
+    <form id="formulario" enctype="multipart/form-data">
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" required>
+        <button type="button" onclick="eliminarLibro()">Eliminar Libro</button>
+    </form>
+    <br>
+    <form id="formulario" enctype="multipart/form-data">     
+        <button type="button" onclick="mostrarLibros()">mostrar Libros</button>
+    </form>
+    <br>
+    <div id="mostrarTabla"></div>   
+    <script src="/js/script.js"></script>
+</body>
+</html>

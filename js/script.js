@@ -30,24 +30,53 @@ function agregarLibro() {
 
 // Function to edit an existing libro
 function editarLibro() {
-    // Similar to agregarLibro, send a PUT request to update an existing libro
-    // You can retrieve form data and send it to the Flask endpoint
+    // Retrieve form data
+    const id = document.getElementById('id').value;
+    const nombre = document.getElementById('nombre_2').value;
+    const linkDescarga = document.getElementById('link_descarga_2').value;
+    const grupo = document.getElementById('grupo_2').value;
+    const imagen = document.getElementById('imagen_2').files[0];
+
+    // Create FormData object to send data as a multipart/form-data
+    const formData = new FormData();
+    formData.append('id', id); // Include the ID for editing
+    formData.append('nombre', nombre);
+    formData.append('link_descarga', linkDescarga);
+    formData.append('grupo', grupo);
+    formData.append('imagen', imagen);
+
+    // Send a PUT request to Flask endpoint for editing
+    fetch(`http://localhost:5000/productos/${id}`, {
+        method: 'PUT',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Libro edited:', data);
+        // Optionally, update the UI or perform other actions
+    })
+    .catch(error => console.error('Error editing libro:', error));
 }
 
 // Function to delete an existing libro
 function eliminarLibro() {
-    // Similar to agregarLibro, send a DELETE request to remove an existing libro
-    // You can retrieve form data and send it to the Flask endpoint
-}
+    // Retrieve form data
+    const id = document.getElementById('id_2').value;
 
-// Function to fetch and display all libros
-function mostrarLibros() {
-    // Send a GET request to fetch all libros from the Flask endpoint
-    fetch('http://localhost:5000/productos')
+    // Create FormData object to send data as a multipart/form-data
+    const formData = new FormData();
+    formData.append('id', id);
+
+    // Send a DELETE request to Flask endpoint for deletion
+    fetch(`http://localhost:5000/productos/${id}`, {
+        method: 'DELETE',
+        body: formData,
+    })
     .then(response => response.json())
     .then(data => {
-        console.log('Libros:', data);
-        // Optionally, update the UI to display the libros
+        console.log('Libro deleted:', data);
+        // Optionally, update the UI or perform other actions
     })
-    .catch(error => console.error('Error fetching libros:', error));
+    .catch(error => console.error('Error deleting libro:', error));
 }
+
